@@ -1,5 +1,6 @@
 const Sequelize = require("sequelize");
-const db = new Sequelize('postgres://localhost:5432/tripdb', {logging: false})
+const db = new Sequelize('postgres://localhost:5432/tripplanner', {logging: false})
+
 
 const Place=db.define('place',{
     address:{
@@ -33,10 +34,10 @@ const Hotel=db.define('hotel',{
     },
     num_stars:{
         type: Sequelize.FLOAT(1,5),
-        validate:{
-            min:1,
-            max:5
-        }
+        // validate:{
+        //     min:1,
+        //     max:5
+        // } 
         allowNull:false
     },
     amenities:{
@@ -77,3 +78,5 @@ const Restaurant=db.define('restaurant',{
 Hotel.belongsTo(Place);
 Activity.belongsTo(Place);
 Restaurant.belongsTo(Place);
+
+module.exports = {db, Place, Hotel, Activity, Restaurant}

@@ -1,15 +1,18 @@
 const express = require("express")
+
 const path = require("path")
 const morgan = require("morgan")
 const bodyParser = require("body-parser")
-const db = require("./models") //.db;
+const db = require("./models").db;
 const app = express()
-
+const routes = require("./routes");
 
 app.use(morgan("dev"))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, '..', 'public')));
+
+app.use("/api", routes);
 
 // Any routes or other various middlewares should go here!
 // base of your app where requests are processed. send this right away!

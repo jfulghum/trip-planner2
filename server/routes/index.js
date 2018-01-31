@@ -23,21 +23,17 @@ module.exports = router;
 //     }).catch(next)
 // })
 
-router.get("/", function(req, res, next){
+router.get("/attractions", function(req, res, next){
     
-    allAttractions = {}
-    const hotel = Hotel.findAll();
-    const restaurant = Restaurant.findAll();
-    const activity = Activity.findAll();
+    const allAttractions = {}
+    const hotels = Hotel.findAll({ include: [{ all: true }] });
+    const restaurants = Restaurant.findAll({ include: [{ all: true }] });
+    const activities = Activity.findAll({ include: [{ all: true }] });
 
-    Promise.all([hotel, restaurant, activity])
-    .then(function(hotel, restaurant, activity){
-        allAttractions["hotel"] = hotel
-        allAttractions["restaurant"] = restaurant
-        allAttractions["activity"] = activity
-    }).then(function(thing){
-        console.log("Thing", thing)
-        // where is this being logged?
-        res.json(allAttractions)
-    }).catch(next)
+    Promise.all([hotels, restaurants, activities])
+    .then(([hotels, restaurants, activities]) => {
+        res.json({hotels, restaurants, activities})
+    })
+    .catch(next)
 })
+

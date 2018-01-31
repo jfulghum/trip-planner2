@@ -7,7 +7,7 @@ module.exports = router;
 
 // retrieve all the hotels, restaurants, and activities 
 //do you only put error as a paramter ONLY when you are writing error handling middleware??
-// router.get("/", function(req, res, next){
+// router.get("/attractions", function(req, res, next){
 //     const allAttractions = {}
 //     Hotel.findAll()
 //     .then(function(hotels){

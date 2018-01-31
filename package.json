@@ -19,7 +19,10 @@
     "mapbox-gl": "^0.40.1",
     "morgan": "^1.9.0",
     "nodemon": "^1.14.11",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "pg": "^6.4.2",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.32.2"
   },
   "repository": {
     "type": "git",
